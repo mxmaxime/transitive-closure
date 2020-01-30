@@ -1,19 +1,25 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const initSocket = require('./socket')
+const getSocketConnection = require('./clientsocket')
 
-(async() => {
-    initSocket().then(com => {
-        console.log({com})
+const sock = getSocketConnection('java')
+
+async function onData() {
+    return new Promise((resolve, reject) => {
+        sock.client.on('data', data => {
+            return resolve(data)
+        })
     })
+}
 
-    com.sendMatrix('coucou les amis')
+const r = onData()
 
-    // app.get('/', (req, res) => {
-    //     res.send('Hello world')
-    // })
-    
-    // app.listen(port, () => console.log(`Web app listening on port ${port}`))
+app.get('/', (req, res) => {
+    sock.client.write('hello world \n')
+    r.then(data => {
+        res.send(data)
+    })
 })
 
+app.listen(port, () => console.log(`Web app listening on port ${port}`))

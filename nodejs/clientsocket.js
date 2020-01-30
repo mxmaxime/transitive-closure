@@ -7,7 +7,7 @@ var option = {
 }
 
 // This function create and return a net.Socket object to represent TCP client.
-function getConn(connName) {
+function getSocketConnection(connName) {
 
     // Create TCP client.
     var client = net.createConnection(option, function () {
@@ -16,7 +16,7 @@ function getConn(connName) {
         console.log('Connection remote address : ' + client.remoteAddress + ":" + client.remotePort)
     })
 
-    client.setTimeout(1000)
+    client.setTimeout(6000)
     client.setEncoding('utf8')
 
     // When receive server send back data.
@@ -37,10 +37,9 @@ function getConn(connName) {
         console.error(JSON.stringify(err))
     })
 
-    return client
+    return {
+        client
+    }
 }
 
-// Create a java client socket.
-var javaClient = getConn('Java')
-
-javaClient.write('Java is worst programming language. \n')
+module.exports = getSocketConnection
