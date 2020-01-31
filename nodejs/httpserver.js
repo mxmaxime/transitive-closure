@@ -3,6 +3,9 @@ const app = express()
 const port = 3000
 const getSocketConnection = require('./clientsocket')
 
+app.use(express.static(__dirname + "/static"));
+app.set('view engine', 'ejs');
+
 const sock = getSocketConnection('java')
 
 async function onData() {
@@ -18,7 +21,7 @@ const r = onData()
 app.get('/', (req, res) => {
     sock.client.write('hello world \n')
     r.then(data => {
-        res.send(data)
+        res.render('index.ejs', {graph: data})
     })
 })
 
