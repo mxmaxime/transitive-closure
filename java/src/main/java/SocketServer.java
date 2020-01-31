@@ -8,14 +8,7 @@ import java.net.Socket;
 import java.net.*;
 import java.io.*;
 
-/**
- * This class implements java Socket server
- * @author pankaj
- *
- */
 public class SocketServer {
-    
-    // private static ServerSocket server;
 
     private ServerSocket serverSocket;
     private Socket clientSocket;
@@ -33,10 +26,19 @@ public class SocketServer {
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
             String inputLine;
-            
+
             while((inputLine = in.readLine()) != null) {
                 System.out.println("message received:" + inputLine);
-                out.println("Yes I am the worst programming language cauz I'm java fdp");
+
+                int[][] aMatrix = {
+                        {0, 1, 0},
+                        {0, 1, 0},
+                        {0, 1, 0}
+                };
+
+                String matrixAsJson = SerializeMatrix.getJson(aMatrix);
+
+                out.println(matrixAsJson);
             }
         }
 
