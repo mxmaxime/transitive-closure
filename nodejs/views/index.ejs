@@ -11,6 +11,10 @@
     <h1>Hello</h1>
     <div id="cy"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.9.4/cytoscape.min.js"></script>
+    <script>
+        window.graph = <%- graph %>
+        console.log({graph})
+    </script>
     <script src="./graph.js"></script>
 </body>
 </html>

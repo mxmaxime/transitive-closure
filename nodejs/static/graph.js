@@ -1,9 +1,9 @@
-console.log('script');
+console.log('script')
+console.log({graph})
 
 const cy = cytoscape({
   container: document.querySelector('#cy'),
-  elements: JSON.parse('{"nodes":[{"data":{"id":"A"}},{"data":{"id":"B"}},{"data":{"id":"C"}}],"edges":[{"data":{"id":"AB","source":"A","target":"B"}},{"data":{"id":"BB","source":"B","target":"B"}},{"data":{"id":"CB","source":"C","target":"B"}}]}'),
-
+  elements: graph.original_lib,
   style: [ // the stylesheet for the graph
     {
       selector: 'node',
