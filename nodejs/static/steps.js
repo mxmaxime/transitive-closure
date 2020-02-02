@@ -2,19 +2,25 @@ function setStep(steps, index, cy) {
     if (index >= steps.length) {
         index = steps.length - 1
     }
+   matrixSize = (steps[0]).length;
+
     for (stepIndex = 0; stepIndex <= index; stepIndex++) {
-        for (i = 0; i <= index; i++) {
-            for (j = 0; j <= index; j++) {
+        for (i = 0; i < matrixSize; i++) {
+            for (j = 0; j < matrixSize; j++) {
                 if (steps[stepIndex][i][j] == 1) {
-                    console.log("New step " + stepIndex + " " + i + " " + j);
+                    if (cy.getElementById(i + '-' + j).length != 0 && stepIndex == index) {
+                        cy.getElementById(i + '-' + j).addClass('oldTransitivity')
+                    }
+
                     cy.add({
-                        edges: [
-                        {
+                        edges: [{
                             data: { id: (i + '-' + j), source: i, target: j }
-                        }
-                        ]
+                        }]
                     })
-                    cy.getElementById(i + '-' + j).addClass('highlighted')
+
+                    if (stepIndex == index) {
+                        cy.getElementById(i + '-' + j).addClass('highlighted')
+                    }
                 }
             }
         }
@@ -22,9 +28,11 @@ function setStep(steps, index, cy) {
 }
 
 function setMinimal(steps, cy) {
-    for (stepIndex = 0; stepIndex <= steps.size(); stepIndex++) {
-        for (i = 0; i <= index; i++) {
-            for (j = 0; j <= index; j++) {
+    matrixSize = (steps[0]).length;
+
+    for (stepIndex = 0; stepIndex < steps.length; stepIndex++) {
+        for (i = 0; i < matrixSize; i++) {
+            for (j = 0; j < matrixSize; j++) {
                 if (steps[stepIndex][i][j] == 1) {
                     cy.remove(cy.getElementById(i + '-' + j))
                 }

@@ -34,6 +34,17 @@ const generalConfig = {
         'transition-property': 'background-color, line-color, target-arrow-color',
         'transition-duration': '0.5s'
       }
+    },
+
+    {
+      selector : '.oldTransitivity',
+      style : {
+        'background-color': '#61fcbf',
+        'line-color': '#61fcbf',
+        'target-arrow-color': '#61fcbf',
+        'transition-property': 'background-color, line-color, target-arrow-color',
+        'transition-duration': '0.5s'
+      }
     }
   ],
 
@@ -53,7 +64,8 @@ const cy = cytoscape({
 });
 
 window.setTimeout(() => {
-  setStep(JSON.parse(graph.steps_matrix), 3, cy)
+  setStep(JSON.parse(graph.steps_matrix), 0, cy)
+// setMinimal(JSON.parse(graph.steps_matrix), cy)
 //   cy.add({
 //     edges: [
 //       {
