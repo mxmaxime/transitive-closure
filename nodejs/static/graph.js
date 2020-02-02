@@ -41,7 +41,7 @@ window.setTimeout(() => {
   cy.add({
     edges: [
       {
-        data: { id: 'cd', source: 'c', target: 'd' }
+        data: { id: 'CD', source: 'C', target: 'D' }
       }
     ]
   })
