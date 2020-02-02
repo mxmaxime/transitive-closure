@@ -1,8 +1,7 @@
 console.log('script')
 console.log({graph})
 
-const cy = cytoscape({
-  container: document.querySelector('#cy'),
+const generalConfig = {
   elements: graph.original_lib,
   style: [ // the stylesheet for the graph
     {
@@ -24,6 +23,17 @@ const cy = cytoscape({
         'curve-style': 'bezier',
         'target-arrow-shape': 'chevron'
       }
+    },
+
+    {
+      selector : '.highlighted',
+      style : {
+        'background-color': '#61bffc',
+        'line-color': '#61bffc',
+        'target-arrow-color': '#61bffc',
+        'transition-property': 'background-color, line-color, target-arrow-color',
+        'transition-duration': '0.5s'
+      }
     }
   ],
 
@@ -35,15 +45,21 @@ const cy = cytoscape({
     animate: true,
     animationDuration: 500
   }
+}
+
+const cy = cytoscape({
+  container: document.querySelector('#cy'),
+  ...generalConfig
 });
 
 window.setTimeout(() => {
-  cy.add({
-    edges: [
-      {
-        data: { id: 'CD', source: 'C', target: 'D' }
-      }
-    ]
-  })
+  setStep(JSON.parse(graph.steps_matrix), 3, cy)
+//   cy.add({
+//     edges: [
+//       {
+//         data: { id: '3-2', source: '3', target: '4' }
+//       }
+//     ]
+//   })
 }, 1000)
 
