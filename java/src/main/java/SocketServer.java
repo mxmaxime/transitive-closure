@@ -30,15 +30,14 @@ public class SocketServer {
             while((inputLine = in.readLine()) != null) {
                 System.out.println("message received:" + inputLine);
 
-                int[][] aMatrix = {
-                        {0, 1, 0},
-                        {0, 1, 0},
-                        {0, 1, 0}
-                };
-
-                String matrixAsJson = SerializeMatrix.getJson(aMatrix);
-
-                out.println(matrixAsJson);
+//                int[][] aMatrix = {
+//                        {0, 1, 0},
+//                        {0, 1, 0},
+//                        {0, 1, 0}
+//                };
+//
+//                String matrixAsJson = SerializeMatrix.getJson(aMatrix);
+                out.println(DataTest.get());
             }
         }
 

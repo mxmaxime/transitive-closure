@@ -34,14 +34,14 @@ public class SerializeMatrix {
         return edge;
     }
 
-    public static String getJson(int[][] aMatrix) {
+    public static JSONObject getJsonObject(int [][] aMatrix) {
         int i, j;
         int lines = aMatrix.length;
         int columns = aMatrix[0].length;
 
         if (lines != columns) {
             System.out.println("ERROR : matrix format");
-            return new String();
+            return null;
         }
 
         JSONObject anElement = new JSONObject();
@@ -63,7 +63,11 @@ public class SerializeMatrix {
         }
         anElement.put("edges", edges);
 
-        return anElement.toJSONString();
+        return anElement;
+    }
+
+    public static String getJson(int[][] aMatrix) {
+        return getJsonObject(aMatrix).toJSONString();
     }
 
     /**
