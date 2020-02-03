@@ -34,6 +34,8 @@ public class SocketServer {
 
                 // Lorianu will work here.
 
+                int [][] tabMatrix = SerializeMatrix.raf(inputLine);
+
                 // send data to NodeJS socket
                 out.println(DataTest.get());
             }
