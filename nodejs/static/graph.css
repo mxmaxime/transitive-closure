@@ -4,7 +4,8 @@ html, body {
 }
 
 .container-graph {
-    height: 100%;
+    position: relative;
+    height: 90%;
     display: block;
 }
 

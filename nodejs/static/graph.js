@@ -1,5 +1,6 @@
 const generalConfig = {
   elements: graph.original_lib,
+  zoomingEnabled: false,
   style: [ // the stylesheet for the graph
     {
       selector: 'node',
