@@ -4,21 +4,6 @@ import java.util.Arrays;
 
 public class DataTest {
     public static String get() {
-        int[][] aMatrix = {
-                {0, 1, 0},
-                {0, 1, 0},
-                {0, 1, 0}
-        };
-
-        String tmp = SerializeMatrix.getJson(aMatrix);
-        int[][] aMatrix1 = SerializeMatrix.getMatrix(tmp);
-
-        System.out.println("Json obtenu :");
-        System.out.println(tmp);
-
-        System.out.println("Matrice obtenue :");
-        System.out.println(Arrays.deepToString(aMatrix1));
-
         JSONObject edge = new JSONObject();
         int original[][] = {
                 {0, 1, 0, 1, 0, 0, 0},
