@@ -28,7 +28,7 @@ public class SerializeMatrix {
         return edge;
     }
 
-    public static JSONObject getJsonObject(int [][] aMatrix) {
+    public static JSONObject getMatrixJsonFormat(int [][] aMatrix) {
         int i, j;
         int lines = aMatrix.length;
         int columns = aMatrix[0].length;
@@ -61,7 +61,7 @@ public class SerializeMatrix {
     }
 
     public static String getJson(int[][] aMatrix) {
-        return getJsonObject(aMatrix).toJSONString();
+        return getMatrixJsonFormat(aMatrix).toJSONString();
     }
 
     /**

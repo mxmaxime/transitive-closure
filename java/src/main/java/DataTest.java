@@ -1,5 +1,4 @@
 import org.json.simple.JSONObject;
-import org.json.simple.JSONArray;
 
 import java.util.Arrays;
 
@@ -88,8 +87,8 @@ public class DataTest {
                 }
         };
         edge.put("original_matrix", Arrays.deepToString(original));
-        edge.put("original_lib", SerializeMatrix.getJsonObject(original));
-        edge.put("minimum_lib", SerializeMatrix.getJsonObject(minimum));
+        edge.put("original_lib", SerializeMatrix.getMatrixJsonFormat(original));
+        edge.put("minimum_lib", SerializeMatrix.getMatrixJsonFormat(minimum));
         edge.put("steps_matrix", Arrays.deepToString(steps));
         return edge.toJSONString();
     }
