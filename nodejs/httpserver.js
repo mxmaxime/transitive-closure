@@ -19,13 +19,6 @@ async function onData() {
 const r = onData()
 
 app.get('/', (req, res) => {    
-    sock.client.write('hello world \n')
-    r.then(data => {
-        res.render('index.ejs', {graph: data})
-    })
-})
-
-app.get('/send-matrix', (req, res) => {
     const fakeMatrix = [
         [0, 1, 0, 1, 0, 0, 0],
         [0, 0, 1, 0, 0, 0, 1],
@@ -37,7 +30,10 @@ app.get('/send-matrix', (req, res) => {
     ]
 
     sock.client.write(JSON.stringify(fakeMatrix) + '\n')
-    res.send('Posted!')
+
+    r.then(data => {
+        res.render('index.ejs', {graph: data})
+    })
 })
 
 app.listen(port, () => console.log(`Web app listening on port ${port}`))
