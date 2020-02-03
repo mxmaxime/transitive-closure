@@ -1,0 +1,57 @@
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #F8F6F9;
+    --dark-background: hsl(235, 17%, 26%);
+    --primary: #CCC;
+}
+
+body {
+    font-family: 'Open Sans', Arial, Helvetica, Verdana, sans-serif;
+    background-color: #f1f4f5;
+    /* color: color('grey', 'base'); */
+    line-height: 25px;
+    letter-spacing: 0.5px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+/**
+ * RESET
+*/
+body {
+    margin: 0;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  ul, ol {
+    padding: 0;
+    margin: 0;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  button {
+    font-size: 1rem;
+    /* font-family: $base-font-family; */
+    outline: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  /* https://css-tricks.com/removing-the-dotted-outline/ */
+  a:hover, a:active, a:focus {
+    outline: 0;
+}

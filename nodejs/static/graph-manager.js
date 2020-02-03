@@ -27,7 +27,7 @@ function paginationButtonClickHandler(e) {
     const toShow = [graphContainer, prevGraphContainer]
 
     const elsToHide = graphContainerEls.filter(el => !toShow.includes(el))
-    elsToHide.forEach(el => el.style = `transform: translateX(200%)`)
+    elsToHide.forEach(el => el.style = `transform: translateX(300%)`)
 }
 
 function createAndAddPaginationButton(index) {
