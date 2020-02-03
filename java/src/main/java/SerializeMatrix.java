@@ -6,15 +6,11 @@ import org.json.simple.parser.ParseException;
 import java.util.ArrayList;
 
 public class SerializeMatrix {
-    private static String getName(int a) {
-        return String.valueOf((char) (a + 65));
-    }
-
     private static JSONObject getNode(int a) {
         JSONObject node = new JSONObject();
         JSONObject nodeData = new JSONObject();
 
-        nodeData.put("id", getName(a));
+        nodeData.put("id", new String("" + a));
         node.put("data", nodeData);
 
         return node;
@@ -23,12 +19,10 @@ public class SerializeMatrix {
     private static JSONObject getEdge(int a, int b) {
         JSONObject edge = new JSONObject();
         JSONObject edgeData = new JSONObject();
-        String aa = getName(a);
-        String bb = getName(b);
 
-        edgeData.put("id", (aa + bb));
-        edgeData.put("source", aa);
-        edgeData.put("target", bb);
+        edgeData.put("id", new String(a + "-" + b));
+        edgeData.put("source", new String("" + a));
+        edgeData.put("target", new String("" + b));
         edge.put("data", edgeData);
 
         return edge;
