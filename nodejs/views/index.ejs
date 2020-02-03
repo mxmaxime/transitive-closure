@@ -12,6 +12,11 @@
     <div id="container-graph" class="container-graph"></div>
     <div id="cy">
     </div>
+
+    <form action="#" id="matrix-form">
+        <textarea name="matrix" id="matrix"></textarea>
+        <button type="submit">Envoyer</button>
+    </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.9.4/cytoscape.min.js"></script>
     <script>
         window.graph = <%- graph %>
@@ -20,5 +25,6 @@
     <script src="./steps.js"></script>
     <script src="./graph.js"></script>
     <script src="./graph-manager.js"></script>
+    <script src="./form-matrix.js"></script>
 </body>
 </html>

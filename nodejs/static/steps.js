@@ -45,4 +45,3 @@ function drawMinimalGraph(steps, cy) {
         }
     }
 }
-        
