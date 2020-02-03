@@ -36,7 +36,7 @@ app.get('/send-matrix', (req, res) => {
         [0, 0, 0, 0, 0, 1, 0]
     ]
 
-    sock.client.write(JSON.stringify(fakeMatrix))
+    sock.client.write(JSON.stringify(fakeMatrix) + '\n')
     res.send('Posted!')
 })
 

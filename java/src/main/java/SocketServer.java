@@ -28,15 +28,13 @@ public class SocketServer {
             String inputLine;
 
             while((inputLine = in.readLine()) != null) {
+                // get data from NodeJS socket (supposed to be a matrix [[]] if Maxime doesn't suck)
+                // otherwise go kill him.
                 System.out.println("message received:" + inputLine);
 
-//                int[][] aMatrix = {
-//                        {0, 1, 0},
-//                        {0, 1, 0},
-//                        {0, 1, 0}
-//                };
-//
-//                String matrixAsJson = SerializeMatrix.getJson(aMatrix);
+                // Lorianu will work here.
+
+                // send data to NodeJS socket
                 out.println(DataTest.get());
             }
         }
