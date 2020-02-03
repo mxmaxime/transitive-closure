@@ -3,8 +3,20 @@ html, body {
     height: 100%;
 }
 
-#cy {
-    width: 100%;
+.container-graph {
     height: 100%;
     display: block;
+}
+
+.container-graph > div {
+    width: 50%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.container-graph .container-graph--visible {
+    /* display: block; */
 }
