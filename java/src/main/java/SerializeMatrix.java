@@ -28,7 +28,7 @@ public class SerializeMatrix {
         return edge;
     }
 
-    public static JSONObject getJsonObject(int [][] aMatrix) {
+    public static JSONObject getMatrixJsonFormat(int [][] aMatrix) {
         int i, j;
         int lines = aMatrix.length;
         int columns = aMatrix[0].length;
@@ -61,7 +61,7 @@ public class SerializeMatrix {
     }
 
     public static String getJson(int[][] aMatrix) {
-        return getJsonObject(aMatrix).toJSONString();
+        return getMatrixJsonFormat(aMatrix).toJSONString();
     }
 
     /**
@@ -109,5 +109,26 @@ public class SerializeMatrix {
         }
 
         return retMatrix;
+    }
+
+    public static int[][] raf(String tmpString) {
+        JSONParser parser = new JSONParser();
+        JSONArray matrixList = new JSONArray();
+        JSONArray aLine = new JSONArray();
+        try {
+            matrixList = (JSONArray) parser.parse(tmpString);
+        } catch (ParseException exept) {
+            System.out.println("Message " + exept.toString());
+        }
+        int width, height;
+        int i, j;
+        int [][] matrix = new int[matrixList.size()][((JSONArray)matrixList.get(0)).size()];
+        for (i = 0; i < matrixList.size(); i++) {
+            aLine = (JSONArray) matrixList.get(i);
+            for (j = 0; j < aLine.size(); j++) {
+                matrix[i][j] = ((Long)aLine.get(j)).intValue();
+            }
+        }
+        return matrix;
     }
 }

@@ -1,8 +1,6 @@
-console.log('script')
-console.log({graph})
-
 const generalConfig = {
   elements: graph.original_lib,
+  zoomingEnabled: false,
   style: [ // the stylesheet for the graph
     {
       selector: 'node',
@@ -58,20 +56,21 @@ const generalConfig = {
   }
 }
 
-const cy = cytoscape({
-  container: document.querySelector('#cy'),
-  ...generalConfig
-});
+function createGraph(el) {
+  return cytoscape({
+    container: el,
+    ...generalConfig
+  })
+}
 
-window.setTimeout(() => {
-  setStep(JSON.parse(graph.steps_matrix), 0, cy)
-// setMinimal(JSON.parse(graph.steps_matrix), cy)
-//   cy.add({
-//     edges: [
-//       {
-//         data: { id: '3-2', source: '3', target: '4' }
-//       }
-//     ]
-//   })
-}, 1000)
+// window.setTimeout(() => {
+//   setStep(JSON.parse(graph.steps_matrix), 3, cy)
+// //   cy.add({
+// //     edges: [
+// //       {
+// //         data: { id: '3-2', source: '3', target: '4' }
+// //       }
+// //     ]
+// //   })
+// }, 1000)
 

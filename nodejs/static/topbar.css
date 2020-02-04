@@ -1,0 +1,112 @@
+.topbar {
+    background-color: var(--dark-background);
+}
+  
+/* .topbar__logo {
+    height: 60px;
+    width: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    background-image: url(~/assets/img/logos/logo-header.svg);
+    background-size: 100%;
+    margin-right: $gutters*2;
+} */
+  
+.topbar__navigation {
+    display: flex;
+    flex-grow: 1; /* take all of space */
+}
+  
+.topbar__navigation__menu {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    /*align-items: center; /* centrer verticalement les items */
+}
+  
+.topbar__navigation__menu__link {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* centrer vertical child (= text, it's good!) */
+  
+    padding: calc(3 * var(--gutters)) calc(2 * var(--gutters));
+  
+    font-weight: 600;
+    color: #FFFFFB;
+    opacity: 0.7;
+    text-decoration: none;
+  
+    transition: .1s ease-in-out color;  
+}
+
+.topbar__navigation__menu__link.active {
+    opacity: 1;
+}
+
+
+/* &:hover, &.exact-active-link {
+    color: color('mx-purple', 'base');
+  } */
+
+#topbar__icon {
+    display: none;
+}
+
+@media only screen and (max-width: 1010px) {
+    :root {
+        --topbar-height: 50px;
+    }
+
+    .topbar-container {
+        height: var(--topbar-height);
+    }
+
+    #topbar__icon {
+        /* reset button style */
+        border: 0;
+        padding: 0;
+        /* end */
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: 50px;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+    }
+
+    #topbar__icon::after {
+        content: '';
+        width: 16px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-15px);
+        height: 0;
+        box-shadow: 0 10px 0 1px #FFF, 0 16px 0 1px #FFF, 0 22px 0 1px #FFF;
+    }
+
+    /* so the button to show the menu is on the left side without marge. */
+    .topbar-container {
+        padding-left: 0px!important;
+    }
+
+    .topbar__navigation {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        top: var(--topbar-height);
+        background-color: var(--dark-background);
+        z-index: 9;
+        transform: translateX(-100%);
+        transition: .3s transform;
+    }
+
+    .topbar__navigation.topbar__navigation--active {
+        transform: translateX(0);
+    }
+
+    .topbar__navigation__menu {
+        flex-direction: column;
+    }
+
+}

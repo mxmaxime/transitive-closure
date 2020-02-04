@@ -27,7 +27,12 @@ function setStep(steps, index, cy) {
     }
 }
 
-function setMinimal(steps, cy) {
+function drawInitialGraph(cy) {
+    const data = window.graph.original_lib
+    cy.elements = data
+}
+
+function drawMinimalGraph(steps, cy) {
     matrixSize = (steps[0]).length;
 
     for (stepIndex = 0; stepIndex < steps.length; stepIndex++) {
@@ -40,4 +45,3 @@ function setMinimal(steps, cy) {
         }
     }
 }
-        

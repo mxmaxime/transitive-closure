@@ -4,14 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="flexbox.css">
+    <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="graph.css">
+    <link rel="stylesheet" href="topbar.css">
     <title>Document</title>
 </head>
 <body>
-    <div id="pagination"></div>
-    <div id="container-graph"></div>
-    <div id="cy">
-    </div>
+    <header role="banner" class="topbar l-main">
+
+        <div class="l-container topbar-container flex items-center">
+            <button class="topbar__icon" id="topbar__icon"></button>
+    
+            <nav class="topbar__navigation"
+                role="navigation"
+                aria-label="Menu principal">
+    
+                <ul class="topbar__navigation__menu">
+                    <a href="" class="topbar__navigation__menu__link">Hello</a>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="l-main l-container--full-height" style="min-height: 1000px;">
+        <section class="l-section l-container l-container--full-height">
+            <div class="l-box l-section l-content l-container--full-height l-overflow-hidden">
+                <div>
+                    <div id="pagination"></div>
+                </div>
+                <div style="height: 100%">
+                    <div id="container-graph" class="container-graph"></div>
+                </div>
+                <div>
+                    <form action="#" id="matrix-form">
+                        <textarea name="matrix" id="matrix"></textarea>
+                        <button type="submit">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </section>  
+    </main>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.9.4/cytoscape.min.js"></script>
     <script>
         window.graph = <%- graph %>
@@ -20,5 +55,6 @@
     <script src="./steps.js"></script>
     <script src="./graph.js"></script>
     <script src="./graph-manager.js"></script>
+    <script src="./form-matrix.js"></script>
 </body>
 </html>

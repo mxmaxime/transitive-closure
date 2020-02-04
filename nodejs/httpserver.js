@@ -18,8 +18,19 @@ async function onData() {
 
 const r = onData()
 
-app.get('/', (req, res) => {
-    sock.client.write('hello world \n')
+app.get('/', (req, res) => {    
+    const fakeMatrix = [
+        [0, 1, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0, 1],
+        [0, 0, 0, 0, 0, 0, 1],
+        [0, 0, 0, 0, 1, 1, 0],
+        [0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 0]
+    ]
+
+    sock.client.write(JSON.stringify(fakeMatrix) + '\n')
+
     r.then(data => {
         res.render('index.ejs', {graph: data})
     })
