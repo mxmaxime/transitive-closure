@@ -1,12 +1,9 @@
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.lang.ClassNotFoundException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import java.net.*;
 import java.io.*;
+import java.util.List;
 
 public class SocketServer {
 
@@ -35,9 +32,11 @@ public class SocketServer {
                 // Lorianu will work here.
 
                 int [][] tabMatrix = SerializeMatrix.raf(inputLine);
+                List<Matrice> steps = (new FermetureTransitive(tabMatrix)).getMatrice();
+                //System.out.println(SerializeMatrix.osef(steps));
 
                 // send data to NodeJS socket
-                out.println(DataTest.get());
+                out.println(SerializeMatrix.osef(steps));
             }
         }
 

@@ -4,6 +4,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class SerializeMatrix {
     private static JSONObject getNode(int a) {
@@ -130,5 +132,25 @@ public class SerializeMatrix {
             }
         }
         return matrix;
+    }
+
+    public static String osef(List<Matrice> matrixList) {
+        Matrice original = matrixList.remove(0);
+        JSONObject transitiveClosure = new JSONObject();
+        transitiveClosure.put("original_matrix", Arrays.deepToString(original.getTab()));
+        transitiveClosure.put("original_lib", SerializeMatrix.getMatrixJsonFormat(original.getTab()));
+
+        if (!matrixList.isEmpty()) {
+            int[][][] stepMatrices = new int[matrixList.size()][matrixList.get(0).getTab().length][];
+            for (int i = 0; i < matrixList.size(); i++) {
+                stepMatrices[i] = matrixList.get(i).getTab();
+            }
+            transitiveClosure.put("steps_matrix", Arrays.deepToString(stepMatrices));
+        } else {
+            transitiveClosure.put("steps_matrix", "[]");
+        }
+
+
+        return transitiveClosure.toJSONString();
     }
 }

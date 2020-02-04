@@ -18,7 +18,7 @@ class Matrice {
 
             	int calcul= 0;
                 for(int k=0; k<matrice_.getTab().length; k++){
-                	
+
                     calcul += this.getCase(i, k) * matrice_.getCase(k, j);
                 }
                 matriceR[l][c] = calcul;
@@ -80,7 +80,7 @@ class Matrice {
 		matrice[i_][j_] = value_;
 	}
 
-	private int[][] getTab(){
+	public int[][] getTab(){
 
 		return matrice;
 	}
