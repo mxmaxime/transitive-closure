@@ -60,7 +60,7 @@ function createCy(index) {
 }
 
 // +1 for the initial graph, +1 for min graph
-for (let i = 0; i < steps.length +2; i++) {
+for (let i = 0; i < steps.length +3; i++) {
     createAndAddPaginationButton(i)
     const cyContainer = createCy(i)
     // console.log(cyContainer)
@@ -73,6 +73,12 @@ for (let i = 0; i < steps.length +2; i++) {
     }
 
     if (i === steps.length+1) {
+        console.log('min graph')
+        window.drawTransitiveClosure(steps, cy)
+        continue
+    }
+
+    if (i === steps.length+2) {
         console.log('min graph')
         window.drawMinimalGraph(steps, cy)
         continue

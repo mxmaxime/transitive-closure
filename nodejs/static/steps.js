@@ -45,3 +45,22 @@ function drawMinimalGraph(steps, cy) {
         }
     }
 }
+
+function drawTransitiveClosure(steps, cy) {
+   matrixSize = (steps[0]).length;
+
+    for (stepIndex = 0; stepIndex < steps.length; stepIndex++) {
+        for (i = 0; i < matrixSize; i++) {
+            for (j = 0; j < matrixSize; j++) {
+                if (steps[stepIndex][i][j] == 1) {
+                    cy.add({
+                        edges: [{
+                            data: { id: (i + '-' + j), source: i, target: j }
+                        }]
+                    })
+                    cy.getElementById(i + '-' + j).addClass('oldTransitivity')
+                }
+            }
+        }
+    }    
+}
