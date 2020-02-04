@@ -17,6 +17,9 @@ function transitiveClosure(original_matrix) {
     
         i++
     }
+
+    // remove original matrix
+    steps.shift()
     
     return {
         original_matrix,
@@ -45,7 +48,7 @@ function matrixToCytoscape(matrix) {
         const source = index[0]
         const target = index[1]
 
-        const id = `${source}_${target}`
+        const id = `${source}-${target}`
     
         if (value === 1) {
             ob.edges.push({

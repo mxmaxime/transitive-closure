@@ -57,7 +57,6 @@ function createCyContainer(index) {
 }
 
 function drawAll(original_matrix, steps) {
-    console.log(original_matrix)
     // +1 for the initial graph, +1 for min graph
     for (let i = 0; i < steps.length +2; i++) {
         createAndAddPaginationButton(i)
@@ -78,6 +77,7 @@ function drawAll(original_matrix, steps) {
             continue
         }
 
+        console.log('draw step', i-1)
         window.setStep(steps, i-1, cy)
     }
 }
@@ -95,10 +95,17 @@ const original = [
 const matrices = transitiveClosure(original)
 const steps = matrices.steps
 
+console.log({steps})
+
+const stepsArr = []
+for (const step of steps) {
+    stepsArr.push(step._data)
+}
+
 const m = window.matrixToCytoscape(matrices.matrix)
 console.log(m)
 
-drawAll(m, steps)
+drawAll(m, stepsArr)
 
 // const cy = createGraph(document.querySelector('#cy'))
 
