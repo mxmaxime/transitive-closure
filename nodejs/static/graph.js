@@ -1,5 +1,4 @@
 const generalConfig = {
-  elements: graph.original_lib,
   zoomingEnabled: false,
   style: [ // the stylesheet for the graph
     {
@@ -56,9 +55,10 @@ const generalConfig = {
   }
 }
 
-function createGraph(el) {
+function createGraph(container, elements) {
   return cytoscape({
-    container: el,
+    container,
+    elements,
     ...generalConfig
   })
 }

@@ -27,9 +27,13 @@ function setStep(steps, index, cy) {
     }
 }
 
-function drawInitialGraph(cy) {
-    const data = window.graph.original_lib
-    cy.elements = data
+/**
+ * 
+ * @param {*} cy 
+ * @param {*} matrix - matrix with Cytoscape format. 
+ */
+function drawInitialGraph(cy, matrix) {
+    cy.elements = matrix
 }
 
 function drawMinimalGraph(steps, cy) {

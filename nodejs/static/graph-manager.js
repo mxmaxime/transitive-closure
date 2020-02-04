@@ -1,6 +1,3 @@
-const steps = JSON.parse(graph.steps_matrix)
-const nb_steps = steps.length
-
 const paginationEl = document.querySelector('#pagination')
 const graphsContainer = document.querySelector('#container-graph')
 
@@ -43,7 +40,7 @@ function createAndAddPaginationButton(index) {
     paginationEl.appendChild(buttonEl)
 }
 
-function createCy(index) {
+function createCyContainer(index) {
     const container = document.createElement('div')
     container.style = `transform: translateX(${index}00%)`
     container.id = `cy_${index}`
@@ -59,27 +56,49 @@ function createCy(index) {
     return container
 }
 
-// +1 for the initial graph, +1 for min graph
-for (let i = 0; i < steps.length +2; i++) {
-    createAndAddPaginationButton(i)
-    const cyContainer = createCy(i)
-    // console.log(cyContainer)
-    graphContainerEls[i] = cyContainer
+function drawAll(original_matrix, steps) {
+    console.log(original_matrix)
+    // +1 for the initial graph, +1 for min graph
+    for (let i = 0; i < steps.length +2; i++) {
+        createAndAddPaginationButton(i)
+        const cyContainer = createCyContainer(i)
+        // console.log(cyContainer)
+        graphContainerEls[i] = cyContainer
 
-    const cy = window.createGraph(cyContainer)
-    if (i === 0) {
-        window.drawInitialGraph(cy)
-        continue
+        const cy = window.createGraph(cyContainer, original_matrix)
+        if (i === 0) {
+            console.log('initial graph')
+            window.drawInitialGraph(cy, original_matrix)
+            continue
+        }
+
+        if (i === steps.length+1) {
+            console.log('min graph')
+            window.drawMinimalGraph(steps, cy)
+            continue
+        }
+
+        window.setStep(steps, i-1, cy)
     }
-
-    if (i === steps.length+1) {
-        console.log('min graph')
-        window.drawMinimalGraph(steps, cy)
-        continue
-    }
-
-    window.setStep(steps, i-1, cy)
 }
+
+// const steps = JSON.parse(graph.steps_matrix)
+const original = [
+    [0, 1, 0, 1, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0]
+]
+const matrices = transitiveClosure(original)
+const steps = matrices.steps
+
+const m = window.matrixToCytoscape(matrices.matrix)
+console.log(m)
+
+drawAll(m, steps)
 
 // const cy = createGraph(document.querySelector('#cy'))
 

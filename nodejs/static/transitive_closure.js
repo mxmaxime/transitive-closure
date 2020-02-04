@@ -3,7 +3,6 @@ function transitiveClosure(original_matrix) {
 
     const matrix = math.matrix(original_matrix)
     const zeroMatrix = math.zeros(n, n)
-    console.log(zeroMatrix)
     
     const steps = [matrix]
     
@@ -20,20 +19,42 @@ function transitiveClosure(original_matrix) {
     }
     
     return {
+        original_matrix,
+        matrix,
         steps,
         number_of_steps: i
     }
 }
 
-const original = [
-    [0, 1, 0, 1, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0, 1],
-    [0, 0, 0, 0, 0, 0, 1],
-    [0, 0, 0, 0, 1, 1, 0],
-    [0, 0, 0, 0, 0, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 1, 0]
-]
+function matrixToCytoscape(matrix) {
+    const ob = {
+        nodes: [],
+        edges: []
+    }
 
-const data = transitiveClosure(original)
-console.log(data)
+    const arrMatrix = matrix._data
+    for (let i = 0; i < arrMatrix.length; i++) {
+        ob.nodes.push({
+            data: {
+                id: i
+            }
+        })
+    }
+    
+    matrix.forEach(function (value, index, matrix) {
+        const source = index[0]
+        const target = index[1]
+
+        const id = `${source}_${target}`
+    
+        if (value === 1) {
+            ob.edges.push({
+                data: {
+                    id, source, target
+                }
+            })
+        }
+    })
+
+    return ob
+}
