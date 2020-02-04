@@ -86,5 +86,12 @@ function transitivePredecesors(matrix) {
         }
     }
 
-    return state
+    const minimalGraph = math.zeros(matrix.length, matrix.length)._data
+    for (let vertex = 0; vertex < state.length; vertex++) {
+        for (let predecesor of state[vertex][0]) {
+            minimalGraph[predecesor][vertex] = 1
+        }
+    }
+
+    return minimalGraph
 }
