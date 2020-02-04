@@ -1,23 +1,24 @@
+import java.util.List;
+import java.util.ArrayList;
+
 class FermetureTransitive{
 
-	Matrice[] tabMatrice;
+	List<Matrice> listeMatrice = new ArrayList<Matrice>();
 
 	public FermetureTransitive(int[][] matrice_){
 
-		tabMatrice = new Matrice[10];
-		tabMatrice[0] = new Matrice(matrice_);
+		listeMatrice.add(new Matrice(matrice_));
 
-		tabMatrice[1] = tabMatrice[0].Multiplication(tabMatrice[0]);
-		int i=2;
+		listeMatrice.add(listeMatrice.get(listeMatrice.size()-1).MultiplicationBool(listeMatrice.get(0)));
 
 		do{
-			tabMatrice[i] = tabMatrice[i-1].Multiplication(tabMatrice[0]);
-			i++;
-		}while(i<10 || !tabMatrice[i].equals(tabMatrice[i-1]));
+			listeMatrice.add(listeMatrice.get(listeMatrice.size()-1).MultiplicationBool(listeMatrice.get(listeMatrice.size()-2)));
+
+		}while(listeMatrice.get(listeMatrice.size()-1).equals(listeMatrice.get(listeMatrice.size()-2)));
 	}
 
-	public Matrice[] getMatrice(){
+	public List<Matrice> getMatrice(){
 
-		return tabMatrice;
+		return listeMatrice;
 	}
 }
