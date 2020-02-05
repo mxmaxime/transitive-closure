@@ -68,6 +68,7 @@ function drawAll(original_matrix, steps) {
         if (i === 0) {
             console.log('initial graph')
             window.drawInitialGraph(cy, original_matrix)
+            console.log({original_matrix})
             continue
         }
 
@@ -82,7 +83,19 @@ function drawAll(original_matrix, steps) {
     }
 }
 
-// const steps = JSON.parse(graph.steps_matrix)
+function calculateAndDrawAll(original) {
+    const matrices = transitiveClosure(original)
+    const steps = matrices.steps
+
+    const stepsArr = []
+    for (const step of steps) {
+        stepsArr.push(step._data)
+    }
+
+    const m = window.matrixToCytoscape(matrices.matrix)
+    drawAll(m, stepsArr)
+}
+
 const original = [
     [0, 1, 0, 1, 0, 0, 0],
     [0, 0, 1, 0, 0, 0, 1],
@@ -92,20 +105,4 @@ const original = [
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 1, 0]
 ]
-const matrices = transitiveClosure(original)
-const steps = matrices.steps
-
-console.log({steps})
-
-const stepsArr = []
-for (const step of steps) {
-    stepsArr.push(step._data)
-}
-
-const m = window.matrixToCytoscape(matrices.matrix)
-console.log(m)
-
-drawAll(m, stepsArr)
-
-// const cy = createGraph(document.querySelector('#cy'))
-
+calculateAndDrawAll(original)

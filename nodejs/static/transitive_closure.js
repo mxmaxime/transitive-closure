@@ -50,7 +50,7 @@ function matrixToCytoscape(matrix) {
 
         const id = `${source}-${target}`
     
-        if (value === 1) {
+        if (value != 0) {
             ob.edges.push({
                 data: {
                     id, source, target

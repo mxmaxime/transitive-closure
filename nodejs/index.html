@@ -30,6 +30,13 @@
 
     <main class="l-main l-container--full-height" style="min-height: 1000px;">
         <section class="l-section l-container l-container--full-height">
+            
+            <div class="l-box l-section l-content l-overflow-hidden">
+                <form  action="#" id="matrix-form">
+                    <textarea style="height: 100px;" name="matrix" id="matrix"></textarea>
+                    <button type="submit">Envoyer</button>
+                </form>
+            </div>
             <div class="l-box l-section l-content l-container--full-height l-overflow-hidden">
                 <div>
                     <div id="pagination"></div>
@@ -37,14 +44,8 @@
                 <div style="height: 100%">
                     <div id="container-graph" class="container-graph"></div>
                 </div>
-                <div>
-                    <form action="#" id="matrix-form">
-                        <textarea name="matrix" id="matrix"></textarea>
-                        <button type="submit">Envoyer</button>
-                    </form>
-                </div>
             </div>
-        </section>  
+        </section>
     </main>
 
     <script src="static/cytoscape.js"></script>
