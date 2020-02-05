@@ -42,6 +42,17 @@ const generalConfig = {
         'transition-property': 'background-color, line-color, target-arrow-color',
         'transition-duration': '0.5s'
       }
+    },
+
+    {
+      selector : '.transitiveClosure',
+      style : {
+        'background-color': '#fc61bf',
+        'line-color': '#fc61bf',
+        'target-arrow-color': '#fc61bf',
+        'transition-property': 'background-color, line-color, target-arrow-color',
+        'transition-duration': '0.5s'
+      },
     }
   ],
 

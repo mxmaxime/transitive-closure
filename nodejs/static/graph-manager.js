@@ -40,7 +40,7 @@ function createAndAddPaginationButton(index) {
     paginationEl.appendChild(buttonEl)
 }
 
-function createCyContainer(index) {
+function createCyContainer(index, nbSteps) {
     const container = document.createElement('div')
     container.style = `transform: translateX(${index}00%)`
     container.id = `cy_${index}`
@@ -48,6 +48,10 @@ function createCyContainer(index) {
     const description = document.createElement('p')
     if (index === 0) {
         description.innerText = `Graphe initial`
+    } else if (index === nbSteps) {
+        description.innerText = `Fermeture transitive`
+    } else if (index === nbSteps + 1) {
+        description.innerText = `Graphe minimal`
     } else {
         description.innerText = `Étape ${index}`
     }
@@ -60,7 +64,7 @@ function drawAll(original_matrix, steps) {
     // +1 for the initial graph, +1 for min graph
     for (let i = 0; i < steps.length +2; i++) {
         createAndAddPaginationButton(i)
-        const cyContainer = createCyContainer(i)
+        const cyContainer = createCyContainer(i, steps.length)
         // console.log(cyContainer)
         graphContainerEls[i] = cyContainer
 

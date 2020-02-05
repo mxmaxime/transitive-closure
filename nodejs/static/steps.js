@@ -1,6 +1,7 @@
 function setStep(steps, index, cy) {
-    if (index >= steps.length) {
-        index = steps.length - 1
+    n = steps.length - 1
+    if (index > n) {
+        index = n
     }
    matrixSize = (steps[0]).length;
 
@@ -10,6 +11,7 @@ function setStep(steps, index, cy) {
                 if (steps[stepIndex][i][j] == 1) {
                     if (cy.getElementById(i + '-' + j).length != 0 && stepIndex == index) {
                         cy.getElementById(i + '-' + j).addClass('oldTransitivity')
+                        continue
                     }
 
                     cy.add({
@@ -18,7 +20,9 @@ function setStep(steps, index, cy) {
                         }]
                     })
 
-                    if (stepIndex == index) {
+                    if (index == n) {
+                        cy.getElementById(i + '-' + j).addClass('transitiveClosure')
+                    } else if (stepIndex == index) {
                         cy.getElementById(i + '-' + j).addClass('highlighted')
                     }
                 }
