@@ -27,7 +27,7 @@ function paginationButtonClickHandler(e) {
     elsToHide.forEach(el => el.style = `transform: translateX(300%)`)
 }
 
-function createAndAddPaginationButton(index) {
+function createAndAddPaginationButton(index, nbSteps) {
     if (index === 0) return;
     const buttonEl = document.createElement('button')
     buttonEl.classList.add('button')
@@ -35,6 +35,10 @@ function createAndAddPaginationButton(index) {
     buttonEl.dataset.index = index
     if (index === 0) {
         buttonEl.innerText = `Graphe initial`
+    } else if (index === nbSteps) {
+        buttonEl.innerText = `Fermeture t.`
+    } else if (index === nbSteps + 1) {
+        buttonEl.innerText = `Graphe minimal`
     } else {
         buttonEl.innerText = `Step ${index}`
     }
@@ -65,7 +69,7 @@ function createCyContainer(index, nbSteps) {
 function drawAll(original_matrix, steps) {
     // +1 for the initial graph, +1 for min graph
     for (let i = 0; i < steps.length +2; i++) {
-        createAndAddPaginationButton(i)
+        createAndAddPaginationButton(i, steps.length)
         const cyContainer = createCyContainer(i, steps.length)
         // console.log(cyContainer)
         graphContainerEls[i] = cyContainer
