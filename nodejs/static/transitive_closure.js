@@ -12,7 +12,7 @@ function transitiveClosure(original_matrix) {
     
     let i = 0;
     while(!math.deepEqual(last_step(), zeroMatrix) && i < n) {
-        const newStep = math.multiply(last_step(), last_step())
+        const newStep = math.multiply(last_step(), matrix)
         steps.push(newStep)
     
         i++
