@@ -30,6 +30,8 @@ function paginationButtonClickHandler(e) {
 function createAndAddPaginationButton(index) {
     if (index === 0) return;
     const buttonEl = document.createElement('button')
+    buttonEl.classList.add('button')
+    buttonEl.classList.add('animated')
     buttonEl.dataset.index = index
     if (index === 0) {
         buttonEl.innerText = `Graphe initial`
