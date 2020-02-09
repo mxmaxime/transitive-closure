@@ -1,5 +1,4 @@
 const generalConfig = {
-  elements: graph.original_lib,
   zoomingEnabled: false,
   style: [ // the stylesheet for the graph
     {
@@ -43,6 +42,17 @@ const generalConfig = {
         'transition-property': 'background-color, line-color, target-arrow-color',
         'transition-duration': '0.5s'
       }
+    },
+
+    {
+      selector : '.transitiveClosure',
+      style : {
+        'background-color': '#fc61bf',
+        'line-color': '#fc61bf',
+        'target-arrow-color': '#fc61bf',
+        'transition-property': 'background-color, line-color, target-arrow-color',
+        'transition-duration': '0.5s'
+      },
     }
   ],
 
@@ -56,9 +66,10 @@ const generalConfig = {
   }
 }
 
-function createGraph(el) {
+function createGraph(container, elements) {
   return cytoscape({
-    container: el,
+    container,
+    elements,
     ...generalConfig
   })
 }
