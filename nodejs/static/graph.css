@@ -19,6 +19,24 @@ html, body {
     left: 0;
 }
 
-.container-graph .container-graph--visible {
-    /* display: block; */
+.already-transitive, .found-transitive, .transitive {
+    border-top: 2px solid;
+    padding: 10px;
+    margin: 0 20px;
+}
+
+.caption {
+    margin-top: 50px;
+}
+
+.already-transitive {
+    border-color: red;
+}
+
+.found-transitive {
+    border-color: blue;
+}
+
+.transitive {
+    border-color: pink;
 }
