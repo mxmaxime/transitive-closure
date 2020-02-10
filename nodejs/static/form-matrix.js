@@ -7,10 +7,10 @@ function stringToArrayMatrix(str) {
     return finalArray
 }
 
+
 const textareaForm = document.querySelector('#matrix-form')
 
-textareaForm.addEventListener('submit', e => {
-    e.preventDefault()
+function submitMatrixForm(subType) {
     const data = new FormData(textareaForm)
     const matrix = data.get('matrix')
     const matrixArray = stringToArrayMatrix(matrix)
@@ -20,5 +20,11 @@ textareaForm.addEventListener('submit', e => {
     paginationEl.innerHTML = ''
     graphContainerEls.splice(0)
 
-    calculateAndDrawAll(matrixArray)
-})
+    if (subType == 0) {
+        calculateAndDrawAll(matrixArray)
+    } else {
+        const minimal = transitivePredecesors(matrixArray)
+        drawByPredecesors(matrixArray, minimal)
+    }
+    
+}

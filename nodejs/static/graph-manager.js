@@ -106,6 +106,22 @@ function calculateAndDrawAll(original) {
     drawAll(m, stepsArr)
 }
 
+function drawByPredecesors(original_matrix, minimal) {
+    const cy_original_matrix = window.matrixToCytoscape(math.matrix(original_matrix))
+    createAndAddPaginationButton(0, 0)
+    var cyContainer = createCyContainer(0, 0)
+    graphContainerEls[0] = cyContainer
+    var cy = window.createGraph(cyContainer, cy_original_matrix)
+    window.drawInitialGraph(cy, cy_original_matrix)
+
+    const cy_minimal = window.matrixToCytoscape(math.matrix(minimal))
+    createAndAddPaginationButton(1, 0)
+    cyContainer = createCyContainer(1, 0)
+    graphContainerEls[1] = cyContainer
+    cy = window.createGraph(cyContainer, cy_minimal)
+    window.drawInitialGraph(cy, cy_minimal)
+}
+
 const original = [
     [0, 1, 0, 1, 0, 0, 0],
     [0, 0, 1, 0, 0, 0, 1],

@@ -35,9 +35,10 @@
             <div class="l-box l-section l-content l-overflow-hidden">
                 <h1>Fermeture transitive</h1>
 
-                <form class="flex flex-col" action="#" id="matrix-form">
+                <form class="flex" action="#" id="matrix-form">
                     <textarea style="height: 100px; width: 300px" name="matrix" id="matrix"></textarea>
-                    <button type="submit" class="button animated">Envoyer</button>
+                    <button type="button" onclick="submitMatrixForm(0)" class="button animated">Fermeture Transitive</button>
+                    <button type="button" onclick="submitMatrixForm(1)" class="button animated">Predecesseurs</button>
                 </form>
             </div>
             <div class="l-box l-section l-content l-container--full-height l-overflow-hidden">
@@ -55,6 +56,7 @@
     <script src="https://unpkg.com/mathjs@6.6.0/dist/math.js"></script>
 
     <script src="static/transitive_closure.js"></script>
+    <script src="static/transitive_predecesors.js"></script>
 
     <script src="static/steps.js"></script>
     <script src="static/graph.js"></script>
