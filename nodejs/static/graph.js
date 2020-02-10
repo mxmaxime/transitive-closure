@@ -1,5 +1,4 @@
 const generalConfig = {
-  zoomingEnabled: false,
   style: [ // the stylesheet for the graph
     {
       selector: 'node',
