@@ -29,19 +29,21 @@
         </div>
     </header>
 
-    <main class="l-main l-container--full-height" style="min-height: 1000px;">
-        <section class="l-section l-container l-container--full-height">
+    <main class="l-main" style="min-height: 1000px;">
+        <section class="l-section l-container">
            
             <div class="l-box l-section l-content l-overflow-hidden">
                 <h1>Fermeture transitive</h1>
 
-                <form class="flex" action="#" id="matrix-form">
+                <form class="flex flex-col" action="#" id="matrix-form">
                     <textarea style="height: 100px; width: 300px" name="matrix" id="matrix"></textarea>
-                    <button type="button" onclick="submitMatrixForm(0)" class="button animated">Fermeture Transitive</button>
-                    <button type="button" onclick="submitMatrixForm(1)" class="button animated">Predecesseurs</button>
+                    <div class="flex">
+                        <button type="button" onclick="submitMatrixForm(0)" class="button animated">Fermeture Transitive</button>
+                        <button type="button" onclick="submitMatrixForm(1)" class="button animated" style="margin-left: 20px">Predecesseurs</button>
+                    </div>
                 </form>
             </div>
-            <div class="l-box l-section l-content l-container--full-height l-overflow-hidden">
+            <div class="l-box l-section l-content l-overflow-hidden">
                 <div style="height: 500px">
                     <div id="container-graph" class="container-graph"></div>
                 </div>
