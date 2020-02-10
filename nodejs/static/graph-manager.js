@@ -48,7 +48,7 @@ function createAndAddPaginationButton(index, nbSteps) {
 
 function createCyContainer(index, nbSteps) {
     const container = document.createElement('div')
-    container.style = `transform: translateX(${index}00%)`
+    container.style = `transform: translateX($300%)`
     container.id = `cy_${index}`
 
     const description = document.createElement('p')
