@@ -30,13 +30,13 @@ html, body {
 }
 
 .already-transitive {
-    border-color: red;
+    border-color: #61fcbf;
 }
 
 .found-transitive {
-    border-color: blue;
+    border-color: #61bffc;
 }
 
 .transitive {
-    border-color: pink;
+    border-color: #fc61bf;
 }
