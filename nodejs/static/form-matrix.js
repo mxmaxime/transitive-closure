@@ -10,6 +10,14 @@ function stringToArrayMatrix(str) {
 
 const textareaForm = document.querySelector('#matrix-form')
 
+textareaForm.value = `0, 1, 0, 1, 0, 0, 0
+0, 0, 1, 0, 0, 0, 1
+0, 0, 0, 0, 0, 0, 1
+0, 0, 0, 0, 1, 1, 0
+0, 0, 0, 0, 0, 1, 0
+0, 0, 0, 0, 0, 0, 0
+0, 0, 0, 0, 0, 1, 0`
+
 function submitMatrixForm(subType) {
     const data = new FormData(textareaForm)
     const matrix = data.get('matrix')
